@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receta del día | Panqueques</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8ef;
+            color: #392b25;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #e87543;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        header p {
+            opacity: 0.9;
+        }
+
+        .contenedor {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .receta {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px #00000012;
+        }
+
+        .imagen {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .contenido {
+            padding: 25px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background: #ffeadc;
+            color: #bd5428;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #d65f32;
+            margin: 20px 0 10px;
+        }
+
+        .datos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 15px 0;
+            color: #6b5a50;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .paso {
+            cursor: pointer;
+            border-radius: 6px;
+            padding: 3px;
+        }
+
+        .paso.hecho {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        button {
+            background: #e87543;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #c85b30;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #88776b;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .imagen {
+                height: 210px;
+            }
+
+            .contenido {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🍳 Receta del día</h1>
+        <p>Algo rico para preparar en casa</p>
+    </header>
+
+    <main class="contenedor">
+        <article class="receta">
+
+            <img
+                class="imagen"
+                src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=1200&q=80"
+                alt="Panqueques dulces apilados"
+            >
+
+            <div class="contenido">
+                <span class="etiqueta">🍯 Receta dulce</span>
+
+                <h1>Panqueques caseros</h1>
+
+                <p>
+                    Panqueques suaves, fáciles de preparar y perfectos
+                    para desayunar, merendar o disfrutar con dulce de leche.
+                </p>
+
+                <div class="datos">
+                    <span>⏱️ 20 minutos</span>
+                    <span>🍽️ 6 porciones</span>
+                    <span>⭐ Fácil</span>
+                </div>
+
+                <h2>🛒 Ingredientes</h2>
+
+                <ul>
+                    <li>1 taza de harina (125 g)</li>
+                    <li>1 taza de leche (250 ml)</li>
+                    <li>1 huevo</li>
+                    <li>1 cucharada de azúcar</li>
+                    <li>1 cucharadita de esencia de vainilla (opcional)</li>
+                    <li>Un poco de manteca o aceite para la sartén</li>
+                    <li>Dulce de leche para acompañar</li>
+                </ul>
+
+                <h2>👨‍🍳 Preparación</h2>
+
+                <p><small>Hacé clic en cada paso cuando lo termines.</small></p>
+
+                <ol id="pasos">
+                    <li class="paso" onclick="completar(this)">
+                        En un recipiente, mezclá el huevo con la leche y el azúcar.
+                    </li>
+                    <li class="paso" onclick="completar(this)">
+                        Agregá la harina poco a poco y mezclá hasta que no queden grumos.
+                    </li>
+                    <li class="paso" onclick="completar(this)">
+                        Incorporá la esencia de vainilla si querés darle más sabor.
+                    </li>
+                    <li class="paso" onclick="completar(this)">
+                        Calentá una sartén a fuego medio y agregá un poquito de manteca o aceite.
+                    </li>
+                    <li class="paso" onclick="completar(this)">
+                        Verté una porción de mezcla y cociná hasta que los bordes se despeguen.
+                    </li>
+                    <li class="paso" onclick="completar(this)">
+                        Dalo vuelta y cociná el otro lado durante aproximadamente un minuto.
+                    </li>
+                    <li class="paso" onclick="completar(this)">
+                        Serví los panqueques con dulce de leche y ¡a disfrutar!
+                    </li>
+                </ol>
+
+                <p id="progreso">Progreso: 0 de 7 pasos completados.</p>
+
+                <button onclick="reiniciar()">Reiniciar receta ↻</button>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        Hecho con ❤️ para los amantes de la comida.
+    </footer>
+
+    <script>
+        function completar(elemento) {
+            elemento.classList.toggle("hecho");
+
+            const pasos = document.querySelectorAll(".paso");
+            const completados = document.querySelectorAll(".paso.hecho").length;
+ 
+            document.getElementById("progreso").textContent =
+                `Progreso: ${completados} de ${pasos.length} pasos completados.`;
+        }
+
+        function reiniciar() {
+            document.querySelectorAll(".paso").forEach(paso => {
+                paso.classList.remove("hecho");
+            });
+
+            document.getElementById("progreso").textContent =
+                "Progreso: 0 de 7 pasos completados.";
+        }
+    </script>
+
+</body>
+</html>
